@@ -22,6 +22,9 @@
         <li class="nav">
           <nuxt-link to="/buysell" data-toggle="tab">BuySell</nuxt-link>
         </li>
+        <li class="nav">
+          <nuxt-link to="/register" data-toggle="tab">Register</nuxt-link>
+        </li>
       </ul>
     </div>  
     

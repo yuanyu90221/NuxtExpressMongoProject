@@ -13,7 +13,7 @@
       </li>
     </ul> -->
     <!-- <div class="container"> -->
-      <h1>Please login to see the content</h1>
+      <h1>Login</h1>
       <form v-if="!$store.state.authUser" @submit.prevent="login">
         <p class="error" v-if="formError">{{formError}}</p>
         <p>Username: <input type="text" v-model="formUsername" name="username"/></p>
