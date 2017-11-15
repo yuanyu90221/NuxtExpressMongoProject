@@ -54,6 +54,7 @@ footer {
       width: 80%;
       justify-content: flex-end;
       span {
+        cursor: pointer;
         display: flex;
         position:relative;
         height: $radius;

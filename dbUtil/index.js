@@ -5,7 +5,9 @@ user = user || process.env.user
 passwd = passwd || process.env.passwd
 dbname = dbname || process.env.dbname
 const mongoose = require('mongoose')
-mongoose.Promise = Promise
+// mongoose.Promise = Promise
+const Promise = require('bluebird')
+Promise.promisifyAll(mongoose)
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname
 const dbUtil = {
     getConnection: ()=>{

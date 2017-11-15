@@ -1,0 +1,6 @@
+#js vendor file with import/require
+asset/**
+static/**
+node_modules
+.nuxt
+dist

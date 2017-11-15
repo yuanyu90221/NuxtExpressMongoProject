@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
   /*
   ** Headers of the page
@@ -11,7 +12,17 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
-      { rel: 'stylesheet', href: '/font-awesome/css/font-awesome.min.css'}
+      { rel: 'stylesheet', href: '/font-awesome/css/font-awesome.min.css'},
+      { rel: 'stylesheet', href: '/bootstrap/dist/css/bootstrap.min.css'},
+      { rel: 'stylesheet', href: '/tether/dist/css/tether.min.css'},
+      { rel: 'stylesheet', href: '/tether/dist/css/tether-theme-basic.min.css'},
+      { rel: 'stylesheet', href: '/tether/dist/css/tether-theme-arrows.min.css'}
+    ],
+    script: [
+      { src: '/jquery/dist/jquery.min.js'},
+      { src: '/js/errorHandle.js'},
+      { src: '/tether/dist/js/tether.min.js'},
+      { src: '/bootstrap/dist/js/bootstrap.min.js'}
     ]
   },
   /*
@@ -26,17 +37,25 @@ module.exports = {
     /*
     ** Run ESLINT on save
     */
-    // extend (config, ctx) {
-    //   if (ctx.isClient) {
-    //     config.module.rules.push({
-    //       enforce: 'pre',
-    //       test: /\.(js|vue)$/,
-    //       loader: 'eslint-loader',
-    //       exclude: /(node_modules)/
-    //     })
-    //   }
-    // }
+    extend (config, ctx) {
+      // if (ctx.isClient) {
+      //   config.module.rules.push({
+      //     enforce: 'pre',
+      //     test: /\.(js|vue)$/,
+      //     loader: 'eslint-loader',
+      //     exclude: /(node_modules)/
+      //   })
+      // }
+    }
   },
+  // plugins: [
+  //   // set shortcut as global for bootstrap
+  //   new webpack.ProvidePlugin({
+  //     $: 'jquery',
+  //     jQuery: 'jquery',
+  //     'window.jQuery': 'jquery'
+  //   })
+  // ]
   /**
    * Add font-awesome
    */

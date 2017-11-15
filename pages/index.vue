@@ -1,8 +1,8 @@
 <template>
-  <section class="container">
-    <h1 class="title">
+  <div class="container">
+    <!-- <h1 class="title">
       CoolBitx Trader
-    </h1>
+    </h1> -->
     <!-- <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
     
     <ul class="users">
@@ -18,7 +18,7 @@
         <p class="error" v-if="formError">{{formError}}</p>
         <p>Username: <input type="text" v-model="formUsername" name="username"/></p>
         <p>Password: <input type="password" v-model="formPassword" name="passwd"/></p>
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-default">Login</button>
       </form>
       <div v-else>
         Welcome {{$store.state.authUser.username}}!
@@ -27,7 +27,7 @@
         <button @click="logout">Logout</button>
       </div>
       <!-- </div> -->
-  </section>
+  </div>
 </template>
 
 <script>
@@ -36,7 +36,7 @@ import axios from '~/plugins/axios'
 export default {
   async asyncData () {
     let { data } = await axios.get('/api/users')
-    return { users: data}
+    return { users: data }
   },
   head () {
     return {
@@ -51,7 +51,7 @@ export default {
     }
   },
   methods: {
-    async login() {
+    async login () {
       try {
         await this.$store.dispatch('login', {
           username: this.formUsername,

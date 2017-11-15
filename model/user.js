@@ -9,20 +9,36 @@ const schema = new Schema({
     passwd: {
         type: String,
         require: true
+    },
+    email: {
+        type: String,
+        require: true
+    },
+    registerDate: {
+        type: Date,
+        required: true
+    },
+    validateStage: {
+        type: String,
+        required: true,
+        default: 'register'
+    },
+    expiredDate: {
+        type: Date,
+        required: false
+    }    
+}, {
+    toObject: {
+        transform: (doc, ret) => {
+            // 移除掉 object._id
+            delete ret._id
+        }
+    },
+    toJSON: {
+        transform: (doc, ret) => {
+            delete ret._id
+        }
     }
-    // ,
-    // email: {
-    //     type: String,
-    //     require: true
-    // },
-    // registerDate: {
-    //     type: Date,
-    //     required: true
-    // },
-    // validateStage: {
-    //     type: String,
-    //     required: true
-    // }    
 })
 let conn = getConnection()
 

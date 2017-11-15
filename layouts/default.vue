@@ -1,6 +1,7 @@
 <template>
   <div class="root">
     <div class="content">
+      <nav-bar/>
       <nuxt/>
     </div>
     <my-footer/>
@@ -9,10 +10,11 @@
 
 <script>
 import MyFooter from '~/components/Footer.vue'
-
+import NavBar from '~/components/Navbar.vue'
 export default {
   components: {
-    MyFooter
+    MyFooter,
+    NavBar
   }
 }
 </script>
@@ -22,7 +24,7 @@ export default {
 {
   margin: 0;
   width: 100%;
-  padding: 100px 0;
+  /* padding: 100px 0; */
   text-align: center;
 }
 
