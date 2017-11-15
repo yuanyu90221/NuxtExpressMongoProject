@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-      <h1>Please login to see the content</h1>
+      <h1 v-if="!$store.state.authUser">Register For login</h1>
       <form class="formControl" v-if="!$store.state.authUser" @submit.prevent="register">
-        <p class="error" v-if="formError">{{registerError}}</p>
+        <p class="error" v-if="registerError">{{registerError}}</p>
         <p>Username: <input type="text" v-model="registerUsername" name="username"/></p>
         <p>Password: <input type="password" v-model="registerPassword" name="passwd"/></p>
         <p>Confirmed Password: <input type="password" v-model="registerCkPassword" name="cfrPasswd"/></p>
@@ -25,7 +25,7 @@ export default {
       registerUsername: '',
       registerPassword: '',
       registerCkPassword: '',
-      registerEmail:''
+      registerEmail: ''
     }
   }
 }

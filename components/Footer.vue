@@ -9,7 +9,9 @@
       <div class="submenu">
         <div class="menuHead">About</div>
         <div class="menuLi">About us</div>
-        <div class="menuLi">News</div>
+        <div class="menuLi">
+          <nuxt-link to="/news" class="menuLi">News</nuxt-link>
+        </div>
         <div class="menuLi">Contact us</div>
       </div>
       <div class="submenu">
@@ -36,7 +38,6 @@ footer {
   background-color: $bg-color;
   width: 100% !important;
   min-height: 200px;
-  
 }
 .clearDef {
   margin: 20px;
@@ -86,6 +87,10 @@ footer {
     }
     .menuHead {
       font-size: 30px;
+    }
+    .menuLi {
+      color: white;
+      text-decoration: none;
     }
 }
 footer {

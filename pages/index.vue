@@ -14,17 +14,27 @@
     </ul> -->
     <!-- <div class="container"> -->
       <h1>Login</h1>
-      <form v-if="!$store.state.authUser" @submit.prevent="login">
+      <form v-if="!$store.state.authUser" @submit.prevent="login" class="form-horizontal">
         <p class="error" v-if="formError">{{formError}}</p>
-        <p>Username: <input type="text" v-model="formUsername" name="username"/></p>
-        <p>Password: <input type="password" v-model="formPassword" name="passwd"/></p>
+        <div class="form-group">
+          <label for="username" class="control-label col-xs-offset-3 col-xs-3 col-md-3 col-sm-3">Username:</label> 
+          <div class="col-xs-9 col-md-9 col-sm-9">
+            <input type="text" v-model="formUsername" name="username" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="passwd" class="control-label col-xs-3 col-md-3 col-sm-3">Password:</label>
+          <div class="col-xs-9 col-md-9 col-sm-9">
+            <input type="password" v-model="formPassword" name="passwd" class="form-control"/>
+          </div>
+        </div>
         <button type="submit" class="btn btn-default">Login</button>
       </form>
       <div v-else>
         Welcome {{$store.state.authUser.username}}!
-        <pre>I am the secret content, I am shown only when the use is connected.</pre>
+        <p>I am the secret content, I am shown only when the use is connected.</p>
         <p><i>You can also refresh this page, you'll still be connected!</i></p>
-        <button @click="logout">Logout</button>
+        <button @click="logout" class="btn btn-default">Logout</button>
       </div>
       <!-- </div> -->
   </div>
@@ -65,7 +75,7 @@ export default {
         this.formError = e.message
       }
     },
-    async logout(){
+    async logout() {
       try {
         await this.$store.dispatch('logout')
       }

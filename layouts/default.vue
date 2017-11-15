@@ -22,7 +22,7 @@ export default {
 <style>
 .container
 {
-  margin: 0;
+  /* margin: 0; */
   width: 100%;
   /* padding: 100px 0; */
   text-align: center;

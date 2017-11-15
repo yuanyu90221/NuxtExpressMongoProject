@@ -12,17 +12,13 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
-      { rel: 'stylesheet', href: '/font-awesome/css/font-awesome.min.css'},
-      { rel: 'stylesheet', href: '/bootstrap/dist/css/bootstrap.min.css'},
-      { rel: 'stylesheet', href: '/tether/dist/css/tether.min.css'},
-      { rel: 'stylesheet', href: '/tether/dist/css/tether-theme-basic.min.css'},
-      { rel: 'stylesheet', href: '/tether/dist/css/tether-theme-arrows.min.css'}
+      { rel: 'stylesheet', href: '/font-awesome/css/font-awesome.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/dist/css/bootstrap.min.css' }
     ],
     script: [
-      { src: '/jquery/dist/jquery.min.js'},
-      { src: '/js/errorHandle.js'},
-      { src: '/tether/dist/js/tether.min.js'},
-      { src: '/bootstrap/dist/js/bootstrap.min.js'}
+      { src: '/jquery/dist/jquery.min.js' },
+      { src: '/js/errorHandle.js' },
+      { src: '/bootstrap/dist/js/bootstrap.min.js' }
     ]
   },
   /*
@@ -47,7 +43,7 @@ module.exports = {
       //   })
       // }
     }
-  },
+  }
   // plugins: [
   //   // set shortcut as global for bootstrap
   //   new webpack.ProvidePlugin({

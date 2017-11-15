@@ -1,8 +1,8 @@
 let moment = require('moment')
 
 module.exports.genContent = (username, expiredDate, activatedLink) => {
-    let expiredTime = moment(expiredDate).format('YYYY-MM-DD')
-    return `<html>
+  let expiredTime = moment(expiredDate).format('YYYY-MM-DD')
+  return `<html>
                 <head>
                     <meta charset="utf-8" />
                 </head>
