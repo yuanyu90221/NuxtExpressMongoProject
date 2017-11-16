@@ -12,7 +12,6 @@ const createStore = () => {
       // for login
       async login ({commit}, {username, passwd}) {
         try {
-          // console.log(username, passwd)
           const {data} = await axios.post('/api/login', {username, passwd})
           console.log(data)
           commit('SET_USER', data)
