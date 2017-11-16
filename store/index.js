@@ -27,6 +27,23 @@ const createStore = () => {
       async logout ({commit}) {
         await axios.post('/api/logout')
         commit('SET_USER', null)
+      },
+      // for register
+      async register ({commit}, {username, passwd, email}) {
+        console.log(username, passwd, email)
+        try {
+          const {data} = await axios.post('/api/register', {username, passwd, email})
+          console.log(data)
+          commit('SET_REGISTER_STATUS', data)
+        } catch (error) {
+          if (error.response && error.response.status === 401) {
+            throw new Error('Register Error')
+          }
+          throw error
+        }
+      },
+      async clearStatus ({commit}) {
+        commit('SET_REGISTER_STATUS', null)
       }
     },
     state: {
@@ -36,6 +53,9 @@ const createStore = () => {
     mutations: {
       SET_USER: (state, user) => {
         state.authUser = user
+      },
+      SET_REGISTER_STATUS: (state, status) => {
+        state.registerStatus = status
       }
     }
   })

@@ -20,5 +20,13 @@ router.get('/users', function (req, res, next) {
 //     res.sendStatus(404)
 //   }
 // })
+/* GET user by name */
+router.get('/user/:username', (req, res, next) => {
+  console.log(req.params)
+  const { username } = req.params
+  UserDao.queryOnebyCriteria({username}, (err, result) => {
+    if (!err) { res.json({err: result}) } else { res.status(200).json({err: err.message}) }
+  })
+})
 
 export default router

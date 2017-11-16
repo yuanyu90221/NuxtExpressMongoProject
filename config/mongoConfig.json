@@ -2,7 +2,7 @@
 {
 	"domainName":"localhost",
 	"port":27017,
-	"user":"json",
+	"user":"yuanyu",
 	"passwd":"dob770407",
 	"dbname":"test"
 }

@@ -13,7 +13,7 @@
       </li>
     </ul> -->
     <!-- <div class="container"> -->
-      <h1>Login</h1>
+      <h1 v-if="!$store.state.authUser">Login</h1>
       <form v-if="!$store.state.authUser" @submit.prevent="login" class="form-horizontal">
         <p class="error" v-if="formError">{{formError}}</p>
         <div class="form-group">

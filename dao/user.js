@@ -4,17 +4,6 @@ const UserDao = {
     User.find(criteria, (err, result) => {
       callback(err, result)
     })
-    // User.findAsync()
-    // .then((result) => {
-    //     callback(null, result)
-    // })
-    // .catch((err)=>{
-    //     // console.log(err.message)
-    //     callback(err,null)
-    // })
-    // .error((err)=>{
-    //     callback(err, null)
-    // })
   },
   queryOnebyCriteria: (criteria, callback) => {
     User.findOne(criteria, (err, result) => {
@@ -22,9 +11,8 @@ const UserDao = {
     })
   },
   addUser: (userInfo, callback) => {
-    User.insert(userInfo, (err, result) => {
-      callback(err, result)
-    })
+    let insertData = new User(userInfo)
+    insertData.save(callback)
   },
   updateUser: (criteria, updateInfo, callback) => {
     User.update(criteria, updateInfo, (err, result) => {

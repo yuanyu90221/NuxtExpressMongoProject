@@ -5,7 +5,7 @@ const router = Router()
 const {genContent} = require('../../util/genContent')
 router.post('/sendActivateMail', (req, res, next) => {
   let {email, username, expiredDate} = req.body
-
+  console.log('send Activated letter')
   const activatedContent = genContent(username, expiredDate, `http://localhost:3000/activate?username=${username}`)
   MailSender.sendMail(email, 'Verify your CoolBitX email address', activatedContent, (err, result) => {
     if (err) {
