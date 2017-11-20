@@ -10,7 +10,10 @@ const {MailSender} = require('../modules/mail-sender')
 router.post('/login', (req, res, next) => {
   console.log(req.body)
   UserDao.queryOnebyCriteria(req.body, (err, result) => {
-    if (result !== {} && result != null && result.validateStage === 'activated') {
+    if (result !== {} && result != null) {
+      if (result.validateStage !== 'activated') {
+        return res.status(403).json({message: 'Not activate'})
+      }
       req.session.authUser = {username: result.username}
       return res.json({username: result.username})
     }

@@ -13,12 +13,14 @@ const createStore = () => {
       async login ({commit}, {username, passwd}) {
         try {
           const {data} = await axios.post('/api/login', {username, passwd})
-          console.log(data)
           commit('SET_USER', data)
         } catch (error) {
           // if user login
           if (error.response && error.response.status === 401) {
             throw new Error('Bad credentiasl')
+          }
+          if (error.response && error.response.status === 403) {
+            throw new Error('Need to Activated')
           }
           throw error
         }

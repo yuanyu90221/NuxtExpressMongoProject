@@ -11,8 +11,8 @@ module.exports.MailSender = {
       auth: {
         user: 'yuanyu90221@gmail.com',
         pass: '123770522'
-      //   // user: 'yuanyu_90221@hotmail.com',
-      //   // pass: 'dob770522'
+        // user: 'yuanyu_90221@hotmail.com',
+        // pass: 'dob770522'
       }
       // ,
       // tls: {

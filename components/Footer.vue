@@ -2,7 +2,9 @@
   <footer>
     <!-- Visit our website for more documentation : <a href="https://nuxtjs.org" target="_blank">nuxtjs.org</a> -->
     <div class="clearDef">
-      <div class="logo">CBX.io</div>
+      <div class="logo">
+        <nuxt-link to="/">CBX.io</nuxt-link>
+      </div>
       <div class="sns"><span><i class="fa fa-youtube-play"></i></span><span><i class="fa fa-facebook"></i></span><span><i class="fa fa-twitter"></i></span><span><i class="fa fa-instagram"></i></span></div>
     </div>
     <div class="submenuArea">
@@ -37,7 +39,7 @@ $gap: 10px;
 footer {
   background-color: $bg-color;
   width: 100% !important;
-  min-height: 200px;
+  min-height: 100%;
 }
 .clearDef {
   margin: 20px;
@@ -49,6 +51,12 @@ footer {
     display:flex;
     justify-content: flex-start;
     font-size: 2*$font-Size;
+    // cursor: pointer;
+    > a{
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+    }
   }
   .sns {
       display: flex;
@@ -96,13 +104,15 @@ footer {
 footer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  // justify-content: space-between;
+  min-height: 100vh;
 }
 @media(max-width: 970px){
   footer {
     display: flex;
     flex-direction: column;
     margin:0;
+    min-height: 100%;
   }
   .clearDef {
     width: 95%;
