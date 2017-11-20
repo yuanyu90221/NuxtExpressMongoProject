@@ -71,6 +71,7 @@ router.post('/register', (req, res, next) => {
     if (err) { res.json({err: err.message}) } else {
       if (result !== {} && result !== null) {
         res.json({err: `${result.username} has been taken`})
+        // throw new Error(`${result.username} has been taken`)
       } else {
         UserDao.addUser(registeredUser, (err, result1) => {
           if (err) { return res.json({err: err.message}) }

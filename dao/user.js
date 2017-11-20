@@ -2,12 +2,20 @@ const User = require('../model/user').User
 const UserDao = {
   queryAllbyCriteria: (criteria, callback) => {
     User.find(criteria, (err, result) => {
-      callback(err, result)
+      try {
+        callback(err, result)
+      } catch (err) {
+        throw new Error(err.message)
+      }
     })
   },
   queryOnebyCriteria: (criteria, callback) => {
     User.findOne(criteria, (err, result) => {
-      callback(err, result)
+      try {
+        callback(err, result)
+      } catch (err) {
+        throw new Error(err.message)
+      }
     })
   },
   addUser: (userInfo, callback) => {
@@ -16,7 +24,11 @@ const UserDao = {
   },
   updateUser: (criteria, updateInfo, callback) => {
     User.update(criteria, updateInfo, (err, result) => {
-      callback(err, result)
+      try {
+        callback(err, result)
+      } catch (err) {
+        throw new Error(err.message)
+      }
     })
   }
 }
