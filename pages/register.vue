@@ -85,6 +85,11 @@ export default {
         registerCkPassword: 'confirm password should be consistent with password',
         registerEmail: 'email should with correct format'
       }
+    },
+    newsList: function () {
+      return {
+        newList: this.$store.getters.currentNews
+      }
     }
   },
   methods: {
