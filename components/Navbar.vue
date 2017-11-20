@@ -20,7 +20,7 @@
           <nuxt-link to="/register" data-toggle="tab">Register</nuxt-link>
         </li>
         <li class="nav" v-if="!$store.state.authUser">
-          <nuxt-link to="/" data-toggle="tab">login</nuxt-link>
+          <nuxt-link to="/" data-toggle="tab">Login</nuxt-link>
         </li>
         <li class="nav" v-if="$store.state.authUser">
           <span @click="logout">Logout</span>

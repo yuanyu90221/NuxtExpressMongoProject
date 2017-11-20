@@ -1,7 +1,11 @@
 import Vuex from 'vuex'
 import axios from 'axios'
+const news = require('./news/news').news
 const createStore = () => {
   return new Vuex.Store({
+    modules: {
+      news: news
+    },
     actions: {
       nuxtServerInit ({commit}, {req}) {
         if (req.session && req.session.authUser) {
