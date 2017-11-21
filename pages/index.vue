@@ -63,6 +63,7 @@ export default {
   methods: {
     async login () {
       try {
+        await this.$store.dispatch('changeProcess', {isProcessing: true})
         await this.$store.dispatch('login', {
           username: this.formUsername,
           passwd: this.formPassword
@@ -74,13 +75,20 @@ export default {
       catch(e) {
         this.formError = e.message
       }
+      finally {
+        await this.$store.dispatch('changeProcess', {isProcessing: false})
+      }
     },
     async logout() {
       try {
+        await this.$store.dispatch('changeProcess', {isProcessing: true})
         await this.$store.dispatch('logout')
       }
       catch(e) {
         this.formError = e.message
+      }
+      finally {
+        await this.$store.dispatch('changeProcess', {isProcessing: false})
       }
     }
   }

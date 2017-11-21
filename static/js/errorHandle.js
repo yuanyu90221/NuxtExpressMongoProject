@@ -11,5 +11,4 @@
 }());
 window.onerror = (messageOrEvent, source, lineno, colno, error) => {
     console.log(messageOrEvent)
-   
 }
