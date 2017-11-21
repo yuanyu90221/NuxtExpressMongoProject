@@ -37,6 +37,7 @@ const createStore = () => {
       async register ({commit}, {username, passwd, email}) {
         console.log(username, passwd, email)
         try {
+          // commit('SET_PROCESSING_STATUS', {isProcessing: true})
           const {data} = await axios.post('/api/register', {username, passwd, email})
           console.log(data)
           commit('SET_REGISTER_STATUS', data)
@@ -49,11 +50,26 @@ const createStore = () => {
       },
       async clearStatus ({commit}) {
         commit('SET_REGISTER_STATUS', null)
+      },
+      async changeProcess ({commit}, {isProcessing}) {
+        console.log(isProcessing)
+        commit('SET_PROCESSING_STATUS', isProcessing)
+      },
+      async changeDialogShow ({commit}, {isDialogShow}) {
+        console.log(isDialogShow)
+        commit('SET_DIALOG_STATUS', isDialogShow)
+      },
+      async changeDialogMsg ({commit}, {dialogMsg}) {
+        console.log(dialogMsg)
+        commit('SET_DIALOG_MESSAGE', dialogMsg)
       }
     },
     state: {
       authUser: null,
-      registerStatus: null
+      registerStatus: null,
+      isProcessing: false,
+      isDialogShow: false,
+      dialogMsg: null
     },
     mutations: {
       SET_USER: (state, user) => {
@@ -61,6 +77,15 @@ const createStore = () => {
       },
       SET_REGISTER_STATUS: (state, status) => {
         state.registerStatus = status
+      },
+      SET_PROCESSING_STATUS: (state, isProcessing) => {
+        state.isProcessing = isProcessing
+      },
+      SET_DIALOG_STATUS: (state, isDialogShow) => {
+        state.isDialogShow = isDialogShow
+      },
+      SET_DIALOG_MESSAGE: (state, dialogMsg) => {
+        state.dialogMsg = dialogMsg
       }
     }
   })

@@ -1,20 +1,26 @@
 <template>
   <div class="root">
-    <div class="content">
+    <div class="content" :class="{mask: this.$store.state.isDialogShow||this.$store.state.isProcessing }">
       <nav-bar/>
       <nuxt/>
     </div>
-    <my-footer/>
+    <my-footer :class="{mask: this.$store.state.isDialogShow||this.$store.state.isProcessing }"/>
+    <my-processing/>
+    <my-dialog/>
   </div>
 </template>
 
 <script>
 import MyFooter from '~/components/Footer.vue'
 import NavBar from '~/components/Navbar.vue'
+import MyProcessing from '~/components/Processing.vue'
+import MyDialog from '~/components/Modal.vue'
 export default {
   components: {
     MyFooter,
-    NavBar
+    NavBar,
+    MyProcessing,
+    MyDialog
   }
 }
 </script>

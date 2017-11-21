@@ -96,25 +96,31 @@ export default {
     handleFocus() {
       this.hook = false
     },
+    clickHdr() {
+      console.log('click')
+      this.$store.dispatch('changeProcess',{isProcessing: true})
+    },
     async register () {
       try {
-        // this.validateRegister()
-        // validateRegister()
-        // if (this.registerError) {
-        //   return
-        // }
         this.hook = true
         this.registerError = null
         // this.isValid = false
         console.log(this.registerUsername, this.registerPassword, this.registerEmail)
+        await this.$store.dispatch('changeProcess',{isProcessing: true})
         await this.$store.dispatch('register', {
           username: this.registerUsername,
           passwd: this.registerPassword,
           email: this.registerEmail
         })
+        await this.$store.dispatch('changeProcess',{isProcessing: false})
         this.registerError = (this.$store.state.registerStatus.err)? this.$store.state.registerStatus.err : null
-        if (this.$store.state.registerStatus.result) {
-          alert(this.$store.state.registerStatus.result)
+        if (this.$store.state.registerStatus.result) {          
+          // alert(this.$store.state.registerStatus.result)
+          await this.$store.dispatch('changeDialogMsg', {dialogMsg: this.$store.state.registerStatus.result})
+          await this.$store.dispatch('changeDialogShow', {isDialogShow: true})
+          // console.log($nuxt.$modal)
+          // $nuxt.$modal.show('message-dialog', {message: this.$store.state.registerStatus.result})
+          // this.$modal.show('message-dialog', {message: this.$store.state.registerStatus.result})
           this.registerUsername = ''
           this.registerPassword = ''
           this.registerCkPassword = ''
@@ -123,6 +129,9 @@ export default {
       }
       catch(e) {
         this.registerError = e.message
+      }
+      finally {
+        await this.$store.dispatch('changeProcess',{isProcessing: false})
       }
     }
   }

@@ -1,34 +1,23 @@
 const User = require('../model/user').User
 const UserDao = {
   queryAllbyCriteria: (criteria, callback) => {
-    User.find(criteria, (err, result) => {
-      try {
-        callback(err, result)
-      } catch (err) {
-        throw new Error(err.message)
-      }
+    return User.find(criteria, (err, result) => {
+      callback(err, result)
     })
   },
   queryOnebyCriteria: (criteria, callback) => {
-    User.findOne(criteria, (err, result) => {
-      try {
-        callback(err, result)
-      } catch (err) {
-        throw new Error(err.message)
-      }
+    return User.findOne(criteria, (err, result) => {
+      callback(err, result)
     })
   },
   addUser: (userInfo, callback) => {
     let insertData = new User(userInfo)
-    insertData.save(callback)
+    // insertData.save(callback)
+    return User.insertMany(insertData, callback)
   },
   updateUser: (criteria, updateInfo, callback) => {
-    User.update(criteria, updateInfo, (err, result) => {
-      try {
-        callback(err, result)
-      } catch (err) {
-        throw new Error(err.message)
-      }
+    return User.update(criteria, updateInfo, (err, result) => {
+      callback(err, result)
     })
   }
 }

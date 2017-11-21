@@ -5,7 +5,6 @@ const {User} = require('../../model/user')
 const moment = require('moment-timezone')
 const {genContent} = require('../../util/genContent')
 const {MailSender} = require('../modules/mail-sender')
-// const Promise = require('bluebird')
 // Add Post /login
 router.post('/login', (req, res, next) => {
   console.log(req.body)
@@ -33,40 +32,7 @@ router.post('/register', (req, res, next) => {
   const {email, username, passwd} = req.body
   let expiredDate = moment().tz('Asia/Taipei').add({hour: 1})
   let registeredUser = new User({username, email, passwd, registerDate: new Date(), expiredDate: expiredDate})
-  // let ExecPromise = new Promise(function (resolve, reject) {
-  //   resolve(registeredUser)
-  // })
-  // ExecPromise.then((data) => {
-  //   console.log(`first method`)
-  //   console.log(data)
-  //   UserDao.queryOnebyCriteria({username: registeredUser.username}, (err, result) => {
-  //     if (err) { throw new Error({err: err.message}) }
-  //     if (result !== {} && result !== null) { throw new Error({err: `${result.username} has been taken`}) }
-  //     return {data: result}
-  //   })
-  // }).catch((err) => {
-  //   res.json({err: err.message})
-  // }).then((data) => {
-  //   console.log(`second`)
-  //   console.log(data)
-  //   UserDao.addUser(registeredUser, (err, result1) => {
-  //     if (err) { throw new Error({err: err.message}) }
-  //     return {data: result1}
-  //   })
-  // }).catch((err) => {
-  //   res.json({err: err.message})
-  // }).then((data) => {
-  //   console.log(`third`)
-  //   console.log(data)
-  //   const activatedContent = genContent(username, expiredDate, `http://localhost:3000/api/activate?username=${username}`)
-  //   MailSender.sendMail(email, 'Verify your CoolBitX email address', activatedContent, (err, result2) => {
-  //     if (err) { throw new Error({err: err.message}) }
-  //     let currentExpiredDate = moment(expiredDate).format('YYYY-MM-DD HH:mm:sss')
-  //     res.json({result: `Activated Mail has been sended for ${username} about expiredDate ${currentExpiredDate}`})
-  //   })
-  // }).catch((err) => {
-  //   res.json({err: err.message})
-  // })
+
   UserDao.queryOnebyCriteria({username: registeredUser.username}, (err, result) => {
     if (err) { res.json({err: err.message}) } else {
       if (result !== {} && result !== null) {
