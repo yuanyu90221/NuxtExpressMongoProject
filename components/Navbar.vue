@@ -39,6 +39,9 @@
         <li class="nav">
           <nuxt-link to="/buysell" data-toggle="tab">BuySell</nuxt-link>
         </li>
+        <li class="nav" v-if="$store.state.authUser">
+          <nuxt-link to="/profile" data-toggle="tab">Profile</nuxt-link>
+        </li>
       </ul>
     </div>
   </nav>  

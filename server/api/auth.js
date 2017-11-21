@@ -25,7 +25,8 @@ router.post('/login', (req, res, next) => {
 // Add Post /logout
 router.post('/logout', (req, res, next) => {
   delete req.session.authUser
-  res.json({ok: true})
+  res.redirect('/')
+  // res.json({ok: true})
 })
 // Add register /register
 router.post('/register', (req, res, next) => {
