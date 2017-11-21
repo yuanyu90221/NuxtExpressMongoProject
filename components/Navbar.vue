@@ -56,15 +56,21 @@
   }
 }
 .dropdown-menu > li > a {
-  &:hover,focus,active {
+  &:hover,focus,visited,active {
     background-color: #fff;
-    color: black;
+    // color: black;
+    color: blue;
   }
 }
 .dropdown-menu > li > span {
   padding: 3px 20px;
   display: block;
   cursor: pointer;
+  &:hover,focus,visited,active {
+    background-color: #fff;
+    // color: black;
+    color: blue;
+  }
 }
 </style>
 <script>

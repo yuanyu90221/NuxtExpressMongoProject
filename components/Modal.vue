@@ -2,14 +2,10 @@
   <div id="msg-dialog" class="modal" role="dialog" aria-hidden="true" v-if="this.$store.state.isDialogShow">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- <div class="modal-header">
-                <span class="cl-btn" @click="close">&times;</span>
-            </div> -->
             <div class="modal-body">
                 {{this.$store.state.dialogMsg}}
             </div>
             <button class="btn btn-default" @click="close" >Close</button>
-            <!-- <button type="btn btn-default" class="close" data-dismiss="modal">Close</button> -->
         </div>
     </div>
   </div>

@@ -35,11 +35,10 @@ const createStore = () => {
       },
       // for register
       async register ({commit}, {username, passwd, email}) {
-        console.log(username, passwd, email)
+        // console.log(username, passwd, email)
         try {
-          // commit('SET_PROCESSING_STATUS', {isProcessing: true})
           const {data} = await axios.post('/api/register', {username, passwd, email})
-          console.log(data)
+          // console.log(data)
           commit('SET_REGISTER_STATUS', data)
         } catch (error) {
           if (error.response && error.response.status === 401) {
