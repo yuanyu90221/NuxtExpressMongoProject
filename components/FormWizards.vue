@@ -62,6 +62,10 @@ export default {
       return this.currentStep === this.steps.length - 1
     },
     goNext () {
+      if(!this.$store.state.authUser) {
+        this.$router.replace('/')
+        return
+      }
       this.currentStepOnNext()
       if(!this.isLastStep() && this.isCurrentStepValid()) {
         this.currentStep++
