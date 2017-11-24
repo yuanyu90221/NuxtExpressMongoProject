@@ -1,9 +1,9 @@
-global.Promise = require('bluebird')
+// global.Promise = require('bluebird')
 import express from 'express'
 import { Nuxt, Builder } from 'nuxt'
 import bodyParser from 'body-parser'
 import api from './api'
-
+import middleware from './middleware'
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
@@ -20,7 +20,7 @@ app.set('port', port)
 
 // Import API Routes
 app.use('/api', api)
-
+app.use('/', middleware)
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')

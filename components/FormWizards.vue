@@ -4,7 +4,7 @@
     <slot name="page2"></slot>
     <slot name="page3"></slot> -->
     <div class="indicator">
-      <vertical-indicator :steps="steps" :currentStep="currentStep"></vertical-indicator>
+      <vertical-indicator :steps="steps" :currentStep="currentStep" :wizardCompleted="wizardCompleted"></vertical-indicator>
     </div>
     <div class="mainContent">
       <div class="wizard-body-step" v-for="(step, index) in steps" :key="index" v-show="isStepShow(step)">
@@ -15,7 +15,7 @@
       </div>
       <div class="btn btn-default" @click="goBack" v-if="backEnabled && !wizardCompleted">Back</div>
       <div class="btn btn-default" @click="goNext" v-if="!isLastStep()">Next</div>
-      <div class="btn btn-default" @click="completeWizard" v-if="currentStep === steps.length - 1 && !wizardCompleted">Ｃonfirm</div>
+      <div class="btn btn-default" @click="completeWizard" v-if="currentStep === steps.length - 1 && !wizardCompleted">Confirm</div>
     </div>
   </div>
 </template>
@@ -98,6 +98,7 @@ export default {
 }
 .indicator {
   margin-left: 20px;
+  min-width: 120px;
 }
 .mainContent {
   margin-left: 10px;

@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="wizard-particle" :key="index" v-for="(step, index) in steps" :class="{activeWizard: index <= currentStep,
-         verifiedWizard: index <= currentStep}"
+         verifiedWizard: step.isValid() && index < currentStep || wizardCompleted}"
         >
         <div class="wizard-circle" ></div>
         <span>{{step.label}}</span>
     </div>
-    <div class="wizard-particle">
+    <div class="wizard-particle" :class="{activeWizardFinal: wizardCompleted}">
       <div class="wizard-circle"></div>
     </div>
   </div>
@@ -15,7 +15,8 @@
 export default {
   props: {
     currentStep: 0,
-    steps: {}
+    steps: {},
+    wizardCompleted: false
   }
 }
 </script>
@@ -39,16 +40,24 @@ $activeColor: green;
     }
   }
 }
+.activeWizardFinal {
+  & {
+    // color: $activeColor !important;
+    .wizard-circle {
+      // background-color: $activeColor !important;
+      &::before {
+        background-color: $activeColor !important; 
+      }
+    }
+    span {
+      color: $activeColor !important;
+    }
+  }
+}
   // margin-left: 20px;
 .wizard-particle {
   display: flex;
   color: $defaultColor;
-  // &:nth-child(1),&:nth-child(2) {
-  //   color: green;
-  //   .wizard-circle {
-  //     background-color: green;
-  //   }
-  // }
   &:last-child {
     .wizard-circle {
       &:before {
