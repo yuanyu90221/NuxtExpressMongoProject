@@ -39,7 +39,6 @@ $gap: 10px;
 footer {
   background-color: $bg-color;
   width: 100% !important;
-  min-height: 100%;
 }
 .clearDef {
   margin: 20px;
@@ -51,7 +50,6 @@ footer {
     display:flex;
     justify-content: flex-start;
     font-size: 2*$font-Size;
-    // cursor: pointer;
     > a{
       cursor: pointer;
       color: white;
@@ -104,8 +102,7 @@ footer {
 footer {
   display: flex;
   flex-direction: row;
-  // justify-content: space-between;
-  min-height: 100vh;
+  min-height: 25vh;
 }
 @media(max-width: 970px){
   footer {
