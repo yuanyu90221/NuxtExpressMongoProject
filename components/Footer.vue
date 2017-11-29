@@ -72,6 +72,7 @@ footer {
         margin: $gap;
         justify-content:center;
         align-items: center;
+        overflow: hidden;
       }
     }
 }

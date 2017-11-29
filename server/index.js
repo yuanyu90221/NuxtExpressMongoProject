@@ -19,8 +19,9 @@ app.use(session({
 app.set('port', port)
 
 // Import API Routes
-app.use('/api', api)
 app.use('/', middleware)
+app.use('/api', api)
+
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')

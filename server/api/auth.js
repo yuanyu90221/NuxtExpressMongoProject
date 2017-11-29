@@ -1,4 +1,6 @@
 import { Router } from 'express'
+const jwt = require('jsonwebtoken')
+const {SECRET} = require('../../config/constants.json')
 const {UserDao} = require('../../dao/user')
 const router = Router()
 const {User} = require('../../model/user')
@@ -71,6 +73,34 @@ router.get('/activate', (req, res, next) => {
       })
     } else {
       res.json({err: 'activated Time out'})
+    }
+  })
+})
+
+router.post('/authenticate', (req, res) => {
+  UserDao.queryOnebyCriteria({
+    username: req.body.username
+  }, (err, result) => {
+    if (err) {
+      res.json({err: err.message})
+    } else {
+      if (!result) {
+        res.json({err: 'Authentication Error'})
+      } else if (result) {
+        if (result.passwd !== req.body.passwd) {
+          res.json({err: 'Authentication Error'})
+        } else {
+          let user = { username: result.username, email: result.email }
+          let token = jwt.sign(user, SECRET, {
+            expiresIn: 60 * 60 * 24
+          })
+
+          res.json({
+            msg: 'token delivered',
+            token: token
+          })
+        }
+      }
     }
   })
 })
