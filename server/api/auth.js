@@ -94,7 +94,6 @@ router.post('/authenticate', (req, res) => {
           let token = jwt.sign(user, SECRET, {
             expiresIn: 60 * 60 * 24
           })
-
           res.json({
             msg: 'token delivered',
             token: token
